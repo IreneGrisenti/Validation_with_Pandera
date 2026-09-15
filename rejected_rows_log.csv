@@ -1,0 +1,4 @@
+,subject_line,recipients,sent_at,opens,cost_per_email,rejection_reason
+0,Spring Sale,1200.0,2026-03-01,1220.0,0.1,subject_line: The openings should be equal or less than the recipients. (got Spring Sale); recipients: The openings should be equal or less than the recipients. (got 1200); sent_at: The openings should be equal or less than the recipients. (got 2026-03-01 00:00:00); opens: The openings should be equal or less than the recipients. (got 1220); cost_per_email: The openings should be equal or less than the recipients. (got 0.1)
+1,Newsletter,1150.0,2026-03-15,210.0,0.08,"subject_line: isin(['Spring Sale', 'Newsletter #42', 'Product Launch']) (got Newsletter)"
+4,Newsletter #42,1150.0,2025-12-30,190.0,1.0,sent_at: greater_than_or_equal_to(2026-01-01 00:00:00) (got 2025-12-30 00:00:00)
