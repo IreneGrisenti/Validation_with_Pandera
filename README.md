@@ -26,18 +26,18 @@ The clean values, injected errors and the validation rule each error breaks are 
 | `transaction_amount` | float | Amount of the transaction |
 
 Injected errors:
-- Negative or zero `transaction_amount`
-- `transaction_amount` wrong type
+- Negative or non-integer `recipient_id`, `campaign_id`
+- Negative, zero or wrong data type `transaction_amount`
 - Malformed `recipient_email`
 - Missing required field (`recipient_name` or `campaign_name`)
 - Duplicate `transaction_id`
 - Invalid `campaign_type`
-- `campaign_id` / `campaign_name` mismatch
-- `transaction_date` before `send_date`
-- `opened_at` / `clicked_at` before `send_date`
-- Invalid click/open relationship (`clicked_at` without `opened_at`, or `clicked_at` before `opened_at`)
 - Invalid boolean value for `bounced`
-- Negative or non-integer `recipient_id` / `campaign_id`
+- `campaign_id` / `campaign_name` mismatch
+- `opened_at` / `clicked_at` before `send_date`
+- `transaction_date` before `send_date`
+- Invalid click/open relationship (`clicked_at` without `opened_at`, or `clicked_at` before `opened_at`)
+
 
 ## Quick Start
 Clone the repo:  
