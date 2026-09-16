@@ -4,11 +4,9 @@ row_number,error_type,column,original_value,invalid_value,validation_rule
 5,Missing required field,recipient_name,Quinn Larsson,,recipient_name is required and must not be null or blank.
 6,opened_at/clicked_at before send_date,"opened_at/clicked_at, send_date","nan, nan, 2026-10-07 05:13:24","2026-10-07 04:33:24, None, 2026-10-07 05:13:24","opened_at and clicked_at, when populated, must be on or after send_date."
 7,opened_at/clicked_at before send_date,"opened_at/clicked_at, send_date","2026-08-25 18:51:18, nan, 2026-08-24 11:02:18","2026-08-24 09:50:18, None, 2026-08-24 11:02:18","opened_at and clicked_at, when populated, must be on or after send_date."
-13,Invalid click/open relationship,"clicked_at, opened_at","nan, 2026-04-11 21:48:12","2026-04-09 08:52:12, 2026-04-09 09:52:12","clicked_at may be populated only when opened_at is populated, and clicked_at must be at or after opened_at."
 17,opened_at/clicked_at before send_date,"opened_at/clicked_at, send_date","nan, nan, 2025-07-07 02:10:18","2025-07-06 23:59:18, None, 2025-07-07 02:10:18","opened_at and clicked_at, when populated, must be on or after send_date."
 18,campaign_id/campaign_name mismatch,"campaign_id, campaign_name","2, You almost completed your order","2, Welcome to the club",campaign_id must map to its corresponding campaign_name.
 20,campaign_id/campaign_name mismatch,"campaign_id, campaign_name","4, Thanks for choosing us","4, Offers tailored just for you",campaign_id must map to its corresponding campaign_name.
-21,Invalid click/open relationship,"clicked_at, opened_at","nan, 2025-02-25 12:38:25","2025-02-25 06:24:25, 2025-02-25 07:24:25","clicked_at may be populated only when opened_at is populated, and clicked_at must be at or after opened_at."
 24,campaign_id/campaign_name mismatch,"campaign_id, campaign_name","1, Welcome to the club","1, Our monthly newsletter",campaign_id must map to its corresponding campaign_name.
 26,Invalid campaign_type,campaign_type,newsletter,marketing,"campaign_type must be one of: welcome, abandoned cart, promo, transactional, newsletter."
 28,Negative or non-integer recipient_id/campaign_id,recipient_id,100027,ABC,recipient_id must be a positive integer.
@@ -21,14 +19,11 @@ row_number,error_type,column,original_value,invalid_value,validation_rule
 65,Negative or zero transaction_amount,transaction_amount,41.95,-1.50,transaction_amount must be a positive numeric value (> 0).
 67,Malformed recipient_email,recipient_email,taylor.berg+100066@example.com,taylor.berg+100066example.com,"recipient_email must contain a valid local part, '@', and a valid domain."
 70,campaign_id/campaign_name mismatch,"campaign_id, campaign_name","1, Welcome to the club","1, You almost completed your order",campaign_id must map to its corresponding campaign_name.
-73,opened_at/clicked_at before send_date,"opened_at/clicked_at, send_date","nan, nan, 2026-05-21 05:24:18","2026-05-21 05:03:18, None, 2026-05-21 05:24:18","opened_at and clicked_at, when populated, must be on or after send_date."
 76,Negative or zero transaction_amount,transaction_amount,49.99,-1.50,transaction_amount must be a positive numeric value (> 0).
-78,opened_at/clicked_at before send_date,"opened_at/clicked_at, send_date","2025-10-17 01:09:23, nan, 2025-10-14 15:02:23","2025-10-14 14:40:23, None, 2025-10-14 15:02:23","opened_at and clicked_at, when populated, must be on or after send_date."
 80,transaction_date before send_date,transaction_date,,2026-07-21,transaction_date must be on or after send_date.
 84,Duplicate transaction_id,transaction_id,500083.0,500004.0,transaction_id must be unique at transaction grain.
 86,Negative or non-integer recipient_id/campaign_id,recipient_id,100085,-25,recipient_id must be a positive integer.
 88,transaction_date before send_date,transaction_date,,2025-05-30,transaction_date must be on or after send_date.
-91,transaction_date before send_date,transaction_date,,2025-01-29,transaction_date must be on or after send_date.
 93,transaction_amount wrong type,transaction_amount,34.34,,"transaction_amount must be numeric (float/decimal), not a non-numeric string."
 97,Invalid boolean value for bounced,bounced,False,yes,bounced must be a boolean true/false value.
 103,campaign_id/campaign_name mismatch,"campaign_id, campaign_name","2, You almost completed your order","2, Offers tailored just for you",campaign_id must map to its corresponding campaign_name.
@@ -36,11 +31,9 @@ row_number,error_type,column,original_value,invalid_value,validation_rule
 111,Negative or zero transaction_amount,transaction_amount,49.99,-1.50,transaction_amount must be a positive numeric value (> 0).
 112,Missing required field,recipient_name,Parker Hansen,,recipient_name is required and must not be null or blank.
 115,Invalid boolean value for bounced,bounced,False,true,bounced must be a boolean true/false value.
-117,opened_at/clicked_at before send_date,"opened_at/clicked_at, send_date","2025-06-08 01:04:10, nan, 2025-06-05 23:05:10","2025-06-05 22:12:10, None, 2025-06-05 23:05:10","opened_at and clicked_at, when populated, must be on or after send_date."
 120,Negative or non-integer recipient_id/campaign_id,recipient_id,100119,ABC,recipient_id must be a positive integer.
 121,transaction_date before send_date,transaction_date,2025-04-03,2025-02-28,transaction_date must be on or after send_date.
 122,transaction_amount wrong type,transaction_amount,70.25,49.99sek,"transaction_amount must be numeric (float/decimal), not a non-numeric string."
-123,opened_at/clicked_at before send_date,"opened_at/clicked_at, send_date","2026-11-23 06:23:44, nan, 2026-11-21 03:42:44","2026-11-21 02:22:44, None, 2026-11-21 03:42:44","opened_at and clicked_at, when populated, must be on or after send_date."
 124,Missing required field,campaign_name,Our monthly newsletter,,campaign_name is required and must not be null or blank.
 128,Negative or zero transaction_amount,transaction_amount,37.92,-1.50,transaction_amount must be a positive numeric value (> 0).
 129,Invalid boolean value for bounced,bounced,False,1,bounced must be a boolean true/false value.
@@ -59,7 +52,6 @@ row_number,error_type,column,original_value,invalid_value,validation_rule
 180,Malformed recipient_email,recipient_email,robin.lindberg+100179@example.com,robin.lindberg+100179example.com,"recipient_email must contain a valid local part, '@', and a valid domain."
 183,Invalid boolean value for bounced,bounced,False,1,bounced must be a boolean true/false value.
 184,Missing required field,recipient_name,Jordan Müller,,recipient_name is required and must not be null or blank.
-192,Invalid click/open relationship,"clicked_at, opened_at","nan, 2026-12-13 01:13:59","2026-12-11 16:39:59, 2026-12-11 17:39:59","clicked_at may be populated only when opened_at is populated, and clicked_at must be at or after opened_at."
 193,Missing required field,campaign_name,You almost completed your order,,campaign_name is required and must not be null or blank.
 195,Missing required field,campaign_name,Our monthly newsletter,,campaign_name is required and must not be null or blank.
 198,Missing required field,recipient_name,Parker Martin,,recipient_name is required and must not be null or blank.
@@ -70,7 +62,6 @@ row_number,error_type,column,original_value,invalid_value,validation_rule
 215,Duplicate transaction_id,transaction_id,,500092.0,transaction_id must be unique at transaction grain.
 218,Invalid campaign_type,campaign_type,newsletter,sale,"campaign_type must be one of: welcome, abandoned cart, promo, transactional, newsletter."
 225,Negative or non-integer recipient_id/campaign_id,recipient_id,100224,1.5,recipient_id must be a positive integer.
-226,transaction_date before send_date,transaction_date,2026-07-24,2026-06-08,transaction_date must be on or after send_date.
 228,Invalid campaign_type,campaign_type,newsletter,other,"campaign_type must be one of: welcome, abandoned cart, promo, transactional, newsletter."
 239,Duplicate transaction_id,transaction_id,500238.0,500248.0,transaction_id must be unique at transaction grain.
 241,Invalid boolean value for bounced,bounced,False,1,bounced must be a boolean true/false value.
@@ -81,7 +72,6 @@ row_number,error_type,column,original_value,invalid_value,validation_rule
 254,Duplicate transaction_id,transaction_id,,500041.0,transaction_id must be unique at transaction grain.
 259,transaction_date before send_date,transaction_date,,2025-05-14,transaction_date must be on or after send_date.
 260,transaction_amount wrong type,transaction_amount,52.52,49.99sek,"transaction_amount must be numeric (float/decimal), not a non-numeric string."
-263,Invalid click/open relationship,"clicked_at, opened_at","2025-02-07 21:55:51, 2025-02-06 08:08:51","2025-02-05 15:11:51, 2025-02-05 16:11:51","clicked_at may be populated only when opened_at is populated, and clicked_at must be at or after opened_at."
 269,Malformed recipient_email,recipient_email,finley.taylor+100268@example.com,finley.taylor+100268@example,"recipient_email must contain a valid local part, '@', and a valid domain."
 270,Negative or zero transaction_amount,transaction_amount,49.99,-25.00,transaction_amount must be a positive numeric value (> 0).
 284,Invalid campaign_type,campaign_type,promo,other,"campaign_type must be one of: welcome, abandoned cart, promo, transactional, newsletter."

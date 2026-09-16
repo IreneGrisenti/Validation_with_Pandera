@@ -17,9 +17,9 @@ The clean values, injected errors and the validation rule each error breaks are 
 | `campaign_id` | integer | Unique identifier for the email campaign |
 | `campaign_name` | string | Name of the email campaign |
 | `campaign_type` | string | Type of email campaign |
-| `send_date` | datetime | Date and time the email campaign was sent |
-| `opened_at` | datetime | Date and time the recipient opened the email |
-| `clicked_at` | datetime | Date and time the recipient clicked a link in the email |
+| `send_date` | datetime | Date the email campaign was sent |
+| `opened_date` | datetime | Date the recipient opened the email |
+| `clicked_date` | datetime | Date the recipient clicked a link in the email |
 | `bounced` | boolean | Indicates whether the email bounced |
 | `transaction_id` | integer | Unique identifier for the transaction |
 | `transaction_date` | date | Date of the transaction |
@@ -27,11 +27,11 @@ The clean values, injected errors and the validation rule each error breaks are 
 
 Injected errors:
 - Negative or zero `transaction_amount`
-- `transaction_amount` wrong type (non-numeric string)
+- `transaction_amount` wrong type
 - Malformed `recipient_email`
 - Missing required field (`recipient_name` or `campaign_name`)
 - Duplicate `transaction_id`
-- Invalid `campaign_type` (value outside the 5 allowed categories)
+- Invalid `campaign_type`
 - `campaign_id` / `campaign_name` mismatch
 - `transaction_date` before `send_date`
 - `opened_at` / `clicked_at` before `send_date`
