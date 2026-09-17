@@ -3,11 +3,11 @@ What does it do
 
 
 ## Data
-Since email campaign data with transaction data attached is not publicly available for privacy reasons, I generated a synthetic dataset instead (`data/fake_email_marketing_dataset_300_rows.csv`).  
-It simulates 300 recipient-level records of an email marketing campaign.  
+Since email campaign data with transaction data attached is not publicly available for privacy reasons, I generated a synthetic dataset instead (`data/email_marketing_dataset.csv`).  
+It simulates 100 recipient-level records of an email marketing campaign.  
 
-20% of the rows were corrupted with one of 12 validation error types to give the Pandera schema a meaningful set of failures to catch. 
-The clean values, injected errors and the validation rule each error breaks are logged in `data/fake_email_marketing_injected_errors.csv`
+20% of the rows were corrupted with an error to give the Pandera schema a meaningful set of failures to catch. 
+The clean values, injected errors and the validation rule each error breaks are logged in `data/validation_errors.csv.csv`
 
 | Column name | Dtype | Description |
 |---|---|---|
@@ -17,21 +17,20 @@ The clean values, injected errors and the validation rule each error breaks are 
 | `campaign_id` | integer | Unique identifier for the email campaign |
 | `campaign_name` | string | Name of the email campaign |
 | `campaign_type` | string | Type of email campaign |
-| `send_date` | datetime | Date the email campaign was sent |
-| `opened_date` | datetime | Date the recipient opened the email |
-| `clicked_date` | datetime | Date the recipient clicked a link in the email |
+| `send_date` | date | Date the email campaign was sent |
+| `opened_date` | date | Date the recipient opened the email |
+| `clicked_date` | date | Date the recipient clicked a link in the email |
 | `bounced` | boolean | Indicates whether the email bounced |
 | `transaction_id` | integer | Unique identifier for the transaction |
 | `transaction_date` | date | Date of the transaction |
 | `transaction_amount` | float | Amount of the transaction |
 
 Injected errors:
-- Negative or non-integer `recipient_id`, `campaign_id`
+- Negative or non-integer `recipient_id`, `campaign_id`,  `transaction_id`
 - Negative, zero or wrong data type `transaction_amount`
 - Malformed `recipient_email`
-- Missing required field (`recipient_name` or `campaign_name`)
+- Missing required fields (`recipient_name` or `campaign_name`)
 - Duplicate `transaction_id`
-- Invalid `campaign_type`
 - Invalid boolean value for `bounced`
 - `campaign_id` / `campaign_name` mismatch
 - `opened_at` / `clicked_at` before `send_date`

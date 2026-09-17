@@ -1,14 +1,15 @@
 import pandas as pd
 import pandera.pandas as pa
 
-CAMPAIGN_NAMES = [
-    "Welcome to the club",
-    "You almost completed your order",
-    "Offers tailored just for you",
-    "Thanks for choosing us",
-    "Our monthly newsletter",
-]
-CAMPAIGN_TYPES = ["welcome", "abandoned cart", "promo", "transactional", "newsletter"]
+CAMPAIGN_MAP = {
+    1: "Welcome to the club",
+    2: "You almost completed your order",
+    3: "Offers tailored just for you",
+    4: "Thanks for choosing us",
+    5: "Our monthly newsletter",
+}
+
+CAMPAIGN_NAMES = list(CAMPAIGN_MAP.values())
 
 
 def is_valid_amount(x):
@@ -25,24 +26,27 @@ def is_valid_id(x):
         return False
 
 
-# campaign_id / campaign_name mismatch
-
-
 # opened_at before send_date
-def check_opened_after_send(df):
+def check_opened_after_send(df: pd.DataFrame) -> pd.Series:
     return df["opened_date"].isna() | (df["opened_date"] >= df["send_date"])
 
 
-# clicked_at before opened_at and invalid click/open relationship 
-def check_clicked_after_opened(df):
+# clicked_at before opened_at and invalid click/open relationship
+def check_clicked_after_opened(df: pd.DataFrame) -> pd.Series:
     no_click = df["clicked_date"].isna()
     valid_click = df["opened_date"].notna() & (df["clicked_date"] >= df["opened_date"])
     return no_click | valid_click
 
 
 # transaction_date before send_date
-def check_transaction_after_send(df):
+def check_transaction_after_send(df: pd.DataFrame) -> pd.Series:
     return df["transaction_date"].isna() | (df["transaction_date"] >= df["send_date"])
+
+
+# mismatched campaign_id - campaign_name
+def check_campaign_id_matches_name(df: pd.DataFrame) -> pd.Series:
+    expected_names = df["campaign_id"].map(CAMPAIGN_MAP)
+    return df["campaign_name"] == expected_names
 
 
 raw_email_schema = pa.DataFrameSchema(
@@ -56,13 +60,15 @@ raw_email_schema = pa.DataFrameSchema(
             int, pa.Check(is_valid_id, element_wise=True), coerce=True
         ),
         "campaign_name": pa.Column(str, pa.Check.isin(CAMPAIGN_NAMES), coerce=True),
-        "campaign_type": pa.Column(str, pa.Check.isin(CAMPAIGN_TYPES), coerce=True),
         "send_date": pa.Column(pa.Date, coerce=True),
         "opened_date": pa.Column(pa.Date, coerce=True, nullable=True),
         "clicked_date": pa.Column(pa.Date, coerce=True, nullable=True),
         "bounced": pa.Column(bool, pa.Check.isin(["True", "False"])),
         "transaction_id": pa.Column(
-            pd.Int64Dtype, pa.Check(is_valid_id, element_wise=True), nullable=True, unique=True
+            pd.Int64Dtype,
+            pa.Check(is_valid_id, element_wise=True),
+            nullable=True,
+            unique=True,
         ),
         "transaction_date": pa.Column(pa.Date, coerce=True, nullable=True),
         "transaction_amount": pa.Column(
@@ -75,18 +81,22 @@ raw_email_schema = pa.DataFrameSchema(
         ),
         pa.Check(check_opened_after_send, error="opened_at before send_date"),
         pa.Check(check_clicked_after_opened, error="clicked_at before opened_at"),
+        pa.Check(
+            check_campaign_id_matches_name,
+            error="campaign_id inconsistent with campaign_name",
+        ),
     ],
 )
 
 
-df = pd.read_csv("data/fake_email_marketing_dataset_300_rows.csv")
+raw_df = pd.read_csv("data/email_marketing_dataset.csv")
 
 try:
-    validated = raw_email_schema.validate(df, lazy=True)
+    validated = raw_email_schema.validate(raw_df, lazy=True)
     print("All rows passed.")
 except pa.errors.SchemaErrors as exc:
     failed_idx = exc.failure_cases["index"].dropna().unique()
-    rejected_df = df.loc[failed_idx]
+    rejected_df = raw_df.loc[failed_idx]
 
     reasons = (
         exc.failure_cases.dropna(subset=["index"])
