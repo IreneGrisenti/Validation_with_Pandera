@@ -1,0 +1,68 @@
+,recipient_id,recipient_name,recipient_email,campaign_id,campaign_name,send_date,opened_date,clicked_date,bounced,transaction_id,transaction_date,transaction_amount
+1,2,John Johnson,john.johnson2@example.com,2,You almost completed your order,2026-04-30,2026-04-30,,False,2,2026-05-13,114.12
+2,3,Donna Moore,donna.moore3@example.com,2,You almost completed your order,2026-08-05,2026-08-07,2026-08-09,False,3,2026-08-17,52.87
+3,4,Daniel Hill,daniel.hill4@demoinbox.com,1,Welcome to the club,2026-08-24,2026-08-30,2026-09-01,False,4,2026-09-04,290.79
+6,7,David Wright,david.wright7@mailtest.com,2,You almost completed your order,2026-08-25,2026-09-04,,False,7,2026-09-04,422.21
+7,8,Stephanie Brown,stephanie.brown8@mailtest.com,1,Welcome to the club,2026-06-11,2026-06-12,2026-06-16,False,8,2026-06-21,110.25
+8,9,Ashley Sanchez,ashley.sanchez9@sampleco.net,2,You almost completed your order,2026-05-16,2026-05-24,,False,9,2026-05-29,449.42
+9,10,Betty White,betty.white10@mailtest.com,2,You almost completed your order,2026-09-18,2026-09-18,,False,10,2026-09-23,397.08
+11,12,Linda Wright,linda.wright12@demoinbox.com,3,Offers tailored just for you,2026-02-27,2026-03-01,2026-03-06,False,12,2026-03-07,486.08
+13,14,Ashley Johnson,ashley.johnson14@example.com,3,Offers tailored just for you,2026-06-07,2026-06-10,,False,14,2026-06-09,367.29
+14,15,Robert Wright,robert.wright15@mailtest.com,2,You almost completed your order,2026-09-01,,,False,15,2026-09-14,482.36
+15,16,Paul Gonzalez,paul.gonzalez16@demoinbox.com,4,Thanks for choosing us,2026-07-11,2026-07-19,2026-07-20,False,16,2026-07-21,15.41
+17,18,Nancy Jones,nancy.jones18@mailtest.com,3,Offers tailored just for you,2026-09-06,2026-09-08,,False,18,2026-09-21,125.28
+18,19,Donald Clark,donald.clark19@mailtest.com,1,Welcome to the club,2026-02-19,,,False,19,2026-03-04,236.18
+19,20,George Brown,george.brown20@example.com,1,Welcome to the club,2026-07-26,,,False,20,2026-07-29,128.08
+23,24,Charles Wilson,charles.wilson24@example.com,5,Our monthly newsletter,2026-10-05,2026-10-10,2026-10-14,False,24,2026-10-10,33.16
+24,25,Steven Garcia,steven.garcia25@mailtest.com,1,Welcome to the club,2026-11-01,2026-11-04,2026-11-08,False,25,2026-11-02,311.59
+26,27,Kevin Martin,kevin.martin27@sampleco.net,3,Offers tailored just for you,2026-02-07,2026-02-16,,False,27,2026-02-09,271.13
+27,28,Steven Taylor,steven.taylor28@mailtest.com,3,Offers tailored just for you,2026-02-05,,,False,28,2026-02-10,221.9
+28,29,Paul Martin,paul.martin29@example.com,5,Our monthly newsletter,2026-06-03,,,False,29,2026-06-07,135.91
+29,30,Michael Scott,michael.scott30@mailtest.com,3,Offers tailored just for you,2026-05-25,2026-05-30,2026-06-04,False,30,2026-06-09,129.31
+31,32,Margaret Scott,margaret.scott32@example.com,1,Welcome to the club,2026-02-08,,,False,32,2026-02-12,275.07
+33,34,Susan Thomas,susan.thomas34@example.com,3,Offers tailored just for you,2026-10-14,,,False,34,2026-10-18,463.25
+34,35,Jessica Hernandez,jessica.hernandez35@mailtest.com,4,Thanks for choosing us,2026-01-13,2026-01-18,,False,35,2026-01-20,137.07
+37,38,Thomas Lopez,thomas.lopez38@demoinbox.com,1,Welcome to the club,2026-02-25,2026-03-02,,False,38,2026-02-28,195.67
+38,39,Andrew Gonzalez,andrew.gonzalez39@demoinbox.com,1,Welcome to the club,2026-08-12,2026-08-20,,False,39,2026-08-18,185.29
+41,42,Donna Hill,donna.hill42@demoinbox.com,4,Thanks for choosing us,2026-08-15,2026-08-18,,False,42,2026-08-20,331.13
+42,43,Charles Allen,charles.allen43@demoinbox.com,1,Welcome to the club,2026-05-01,,,False,43,2026-05-07,77.94
+43,44,John Thomas,john.thomas44@sampleco.net,5,Our monthly newsletter,2026-02-07,2026-02-17,,False,44,2026-02-19,249.72
+44,45,Jessica Martinez,jessica.martinez45@example.com,1,Welcome to the club,2026-08-06,2026-08-14,2026-08-18,False,45,2026-08-09,230.95
+46,47,Emily Lewis,emily.lewis47@mailtest.com,4,Thanks for choosing us,2026-08-19,2026-08-22,,False,47,2026-09-03,315.24
+48,49,Brian Martinez,brian.martinez49@mailtest.com,1,Welcome to the club,2026-08-01,2026-08-09,2026-08-09,False,49,2026-08-14,197.79
+49,50,Stephanie Nguyen,stephanie.nguyen50@example.com,5,Our monthly newsletter,2026-07-14,2026-07-19,2026-07-22,False,50,2026-07-27,271.42
+50,51,Deborah Wright,deborah.wright51@mailtest.com,4,Thanks for choosing us,2026-04-23,2026-04-30,2026-05-02,False,51,2026-05-05,363.47
+52,53,Thomas Harris,thomas.harris53@demoinbox.com,2,You almost completed your order,2026-08-21,2026-08-27,2026-08-30,False,53,2026-08-23,237.8
+53,54,Deborah Wright,deborah.wright54@example.com,3,Offers tailored just for you,2026-04-25,,,False,54,2026-04-26,378.35
+54,55,Jessica Gonzalez,jessica.gonzalez55@example.com,5,Our monthly newsletter,2026-03-20,2026-03-27,,False,55,2026-03-26,235.19
+55,56,Thomas White,thomas.white56@mailtest.com,5,Our monthly newsletter,2026-11-07,,,False,56,2026-11-12,482.54
+58,59,Andrew Williams,andrew.williams59@demoinbox.com,5,Our monthly newsletter,2026-08-08,,,False,59,2026-08-18,11.26
+59,60,Anthony Young,anthony.young60@example.com,4,Thanks for choosing us,2026-07-05,2026-07-12,,False,60,2026-07-13,309.88
+60,61,Paul Walker,paul.walker61@sampleco.net,4,Thanks for choosing us,2026-10-31,2026-11-03,,False,61,2026-11-14,125.71
+61,62,Sandra Torres,sandra.torres62@sampleco.net,3,Offers tailored just for you,2026-01-15,2026-01-20,2026-01-21,False,62,2026-01-23,173.47
+62,63,Joshua Moore,joshua.moore63@example.com,5,Our monthly newsletter,2026-04-08,2026-04-14,2026-04-15,False,63,2026-04-23,226.85
+67,68,William Young,william.young68@example.com,1,Welcome to the club,2026-10-21,2026-10-28,2026-10-29,False,68,2026-10-29,470.83
+68,69,Donald Davis,donald.davis69@example.com,4,Thanks for choosing us,2026-09-09,2026-09-19,,False,69,2026-09-18,47.16
+69,70,Jessica Davis,jessica.davis70@sampleco.net,5,Our monthly newsletter,2026-11-02,,,False,70,2026-11-14,228.0
+71,72,Thomas Garcia,thomas.garcia72@mailtest.com,2,You almost completed your order,2026-03-30,2026-04-01,2026-04-04,False,72,2026-04-14,149.17
+72,73,Joseph Jackson,joseph.jackson73@demoinbox.com,4,Thanks for choosing us,2026-02-06,,,False,73,2026-02-12,215.44
+73,74,Paul Anderson,paul.anderson74@mailtest.com,3,Offers tailored just for you,2026-03-14,2026-03-16,,False,74,2026-03-23,222.38
+74,75,Sandra Martin,sandra.martin75@sampleco.net,3,Offers tailored just for you,2026-09-14,2026-09-21,2026-09-21,False,75,2026-09-24,303.84
+76,77,Timothy Lopez,timothy.lopez77@sampleco.net,5,Our monthly newsletter,2026-08-15,,,False,77,2026-08-28,319.22
+77,78,Ashley Garcia,ashley.garcia78@sampleco.net,3,Offers tailored just for you,2026-07-29,2026-08-08,2026-08-09,False,78,2026-08-13,147.67
+78,79,Betty Scott,betty.scott79@example.com,4,Thanks for choosing us,2026-02-15,2026-02-20,2026-02-23,False,79,2026-02-15,330.54
+80,81,Emily Rodriguez,emily.rodriguez81@demoinbox.com,4,Thanks for choosing us,2026-09-06,2026-09-16,,False,81,2026-09-11,158.82
+81,82,James Scott,james.scott82@sampleco.net,1,Welcome to the club,2026-04-26,,,False,82,2026-05-10,473.8
+82,83,Carol Martinez,carol.martinez83@sampleco.net,3,Offers tailored just for you,2026-09-18,,,False,83,2026-10-03,490.22
+86,87,Richard Thomas,richard.thomas87@sampleco.net,2,You almost completed your order,2026-07-30,2026-08-06,,False,87,2026-08-11,494.26
+87,88,Carol Martinez,carol.martinez88@sampleco.net,1,Welcome to the club,2026-03-06,2026-03-15,2026-03-15,False,88,2026-03-20,54.36
+88,89,Sandra Smith,sandra.smith89@mailtest.com,4,Thanks for choosing us,2026-03-21,2026-03-25,2026-03-30,False,89,2026-03-23,426.62
+89,90,Amanda Wright,amanda.wright90@sampleco.net,3,Offers tailored just for you,2026-11-17,,,False,90,2026-11-18,310.64
+90,91,Jessica Jackson,jessica.jackson91@mailtest.com,1,Welcome to the club,2026-08-11,,,False,91,2026-08-14,224.62
+91,92,Brian Martin,brian.martin92@example.com,1,Welcome to the club,2026-06-16,,,False,92,2026-06-27,218.19
+93,94,Donna Martinez,donna.martinez94@mailtest.com,4,Thanks for choosing us,2026-11-23,2026-11-27,,False,94,2026-12-07,451.1
+94,95,Amanda Wright,amanda.wright95@mailtest.com,1,Welcome to the club,2026-08-15,,,False,95,2026-08-24,321.27
+95,96,Margaret Taylor,margaret.taylor96@sampleco.net,3,Offers tailored just for you,2026-04-12,,,False,96,2026-04-15,122.42
+97,98,Amanda Brown,amanda.brown98@sampleco.net,3,Offers tailored just for you,2026-04-28,2026-05-03,2026-05-04,False,98,2026-05-02,315.98
+98,99,Kenneth Williams,kenneth.williams99@demoinbox.com,4,Thanks for choosing us,2026-01-18,2026-01-20,2026-01-22,False,99,2026-01-31,91.94
+99,100,William Wright,william.wright100@demoinbox.com,5,Our monthly newsletter,2026-09-14,,,False,100,2026-09-22,457.45
