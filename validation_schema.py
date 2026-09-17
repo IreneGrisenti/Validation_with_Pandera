@@ -1,3 +1,9 @@
+"""
+Schema definition for validating raw email-marketing campaign data.
+
+Defines `raw_email_schema`, a Pandera DataFrameSchema encoding the expected types, constraints and cross-column rules for the raw dataset.
+"""
+
 import pandas as pd
 import pandera.pandas as pa
 
@@ -13,6 +19,7 @@ CAMPAIGN_NAMES = list(CAMPAIGN_MAP.values())
 
 
 def is_valid_amount(x):
+    """Return True if x can be parsed as a strictly positive float."""
     try:
         return float(x) > 0
     except (ValueError, TypeError):
@@ -20,6 +27,7 @@ def is_valid_amount(x):
 
 
 def is_valid_id(x):
+    """Return True if x can be parsed as a strictly positive integer."""
     try:
         return int(x) > 0
     except (ValueError, TypeError):
@@ -28,11 +36,15 @@ def is_valid_id(x):
 
 # opened_at before send_date
 def check_opened_after_send(df: pd.DataFrame) -> pd.Series:
+    """opened_date must be missing or on/after send_date."""
+
     return df["opened_date"].isna() | (df["opened_date"] >= df["send_date"])
 
 
 # clicked_at before opened_at and invalid click/open relationship
 def check_clicked_after_opened(df: pd.DataFrame) -> pd.Series:
+    """clicked_date must be missing or on/after opened_date (and opened_date must exist)."""
+
     no_click = df["clicked_date"].isna()
     valid_click = df["opened_date"].notna() & (df["clicked_date"] >= df["opened_date"])
     return no_click | valid_click
@@ -40,16 +52,20 @@ def check_clicked_after_opened(df: pd.DataFrame) -> pd.Series:
 
 # transaction_date before send_date
 def check_transaction_after_send(df: pd.DataFrame) -> pd.Series:
+    """transaction_date must be missing or on/after send_date."""
+
     return df["transaction_date"].isna() | (df["transaction_date"] >= df["send_date"])
 
 
 # mismatched campaign_id - campaign_name
 def check_campaign_id_matches_name(df: pd.DataFrame) -> pd.Series:
+    """campaign_name must match the name expected for campaign_id."""
+
     expected_names = df["campaign_id"].map(CAMPAIGN_MAP)
     return df["campaign_name"] == expected_names
 
 
-raw_email_schema = pa.DataFrameSchema(
+raw_data_schema = pa.DataFrameSchema(
     {
         "recipient_id": pa.Column(int, pa.Check(is_valid_id, element_wise=True)),
         "recipient_name": pa.Column(str, coerce=True),
@@ -63,7 +79,7 @@ raw_email_schema = pa.DataFrameSchema(
         "send_date": pa.Column(pa.Date, coerce=True),
         "opened_date": pa.Column(pa.Date, coerce=True, nullable=True),
         "clicked_date": pa.Column(pa.Date, coerce=True, nullable=True),
-        "bounced": pa.Column(bool, pa.Check.isin(["True", "False"])),
+        "bounced": pa.Column(str, pa.Check.isin(["True", "False"]), coerce=True),
         "transaction_id": pa.Column(
             pd.Int64Dtype,
             pa.Check(is_valid_id, element_wise=True),
@@ -87,33 +103,3 @@ raw_email_schema = pa.DataFrameSchema(
         ),
     ],
 )
-
-
-raw_df = pd.read_csv("data/email_marketing_dataset.csv")
-
-try:
-    validated = raw_email_schema.validate(raw_df, lazy=True)
-    print("All rows passed.")
-except pa.errors.SchemaErrors as exc:
-    failed_idx = exc.failure_cases["index"].dropna().unique()
-    rejected_df = raw_df.loc[failed_idx]
-
-    reasons = (
-        exc.failure_cases.dropna(subset=["index"])
-        .groupby("index")
-        .apply(
-            lambda g: "; ".join(
-                f"{r.column}: {r.check} (got {r.failure_case})" for r in g.itertuples()
-            )
-        )
-    )
-
-    rejected_rows_with_reason_df = rejected_df.copy()
-    rejected_rows_with_reason_df = rejected_rows_with_reason_df.sort_index()
-    rejected_rows_with_reason_df["rejection_reason"] = (
-        rejected_rows_with_reason_df.index.map(reasons)
-    )
-
-    print(rejected_df)
-
-    rejected_rows_with_reason_df.to_csv("output/rejected_rows_log.csv", index=True)
