@@ -1,0 +1,31 @@
+recipient_id,error_type,column,invalid_value,validation_rule
+1,missing_required_field,campaign_name,,campaign_name is a required field and cannot be empty
+5,invalid_transaction_amount,transaction_amount,0,transaction_amount must be a positive numeric value
+6,missing_required_field,recipient_name,,recipient_name is a required field and cannot be empty
+11,duplicate_transaction_id,transaction_id,67,transaction_id must be unique across all rows
+13,open_click_before_send,opened_date,2026-11-20,opened_date cannot be earlier than send_date
+17,malformed_email,recipient_email,emily.anderson17demoinbox.com,recipient_email must be a valid email address format
+21,transaction_before_send,transaction_date,2026-08-03,transaction_date cannot be earlier than send_date
+22,invalid_click_open_relationship,clicked_date,2026-03-29,clicked_date cannot be set without a corresponding opened_date
+23,invalid_transaction_amount,transaction_amount,-59.41,transaction_amount must be a positive numeric value
+26,duplicate_transaction_id,transaction_id,48,transaction_id must be unique across all rows
+31,invalid_id_field,transaction_id,-222,transaction_id must be a positive integer
+33,campaign_id_name_mismatch,campaign_name,You almost completed your order,campaign_name must correspond to the correct campaign_id
+36,missing_required_field,recipient_name,,recipient_name is a required field and cannot be empty
+37,invalid_boolean_bounced,bounced,yes,bounced must be a valid boolean value (True/False)
+40,malformed_email,recipient_email,robert.perez40demoinbox.com,recipient_email must be a valid email address format
+41,campaign_id_name_mismatch,campaign_name,Welcome to the club,campaign_name must correspond to the correct campaign_id
+46,invalid_transaction_amount,transaction_amount,-272.41,transaction_amount must be a positive numeric value
+52,invalid_id_field,campaign_id,-793,campaign_id must be a positive integer
+57,invalid_id_field,campaign_id,-880,campaign_id must be a positive integer
+64,invalid_boolean_bounced,bounced,true_ish,bounced must be a valid boolean value (True/False)
+65,campaign_id_name_mismatch,campaign_name,Offers tailored just for you,campaign_name must correspond to the correct campaign_id
+66,open_click_before_send,clicked_date,2026-04-17,clicked_date cannot be earlier than send_date
+71,invalid_click_open_relationship,clicked_date,2026-10-25,clicked_date cannot be earlier than opened_date
+76,duplicate_transaction_id,transaction_id,58,transaction_id must be unique across all rows
+80,invalid_boolean_bounced,bounced,maybe,bounced must be a valid boolean value (True/False)
+84,open_click_before_send,clicked_date,2026-04-07,clicked_date cannot be earlier than send_date
+85,transaction_before_send,transaction_date,2026-05-09,transaction_date cannot be earlier than send_date
+86,invalid_click_open_relationship,clicked_date,2026-10-06,clicked_date cannot be set without a corresponding opened_date
+93,malformed_email,recipient_email,jessica.king93@@mailtest.com,recipient_email must be a valid email address format
+97,transaction_before_send,transaction_date,2026-01-04,transaction_date cannot be earlier than send_date
