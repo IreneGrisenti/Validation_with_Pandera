@@ -70,10 +70,14 @@ raw_data_schema = pa.DataFrameSchema(
         "recipient_id": pa.Column(int, pa.Check(is_valid_id, element_wise=True)),
         "recipient_name": pa.Column(str, coerce=True),
         "recipient_email": pa.Column(
-            str, pa.Check.str_matches(r"^[^@\s]+@[^@\s]+\.[a-zA-Z]{2,}$"), coerce=True
+            str,
+            pa.Check.str_matches(r"^[^@\s]+@[^@\s]+\.[a-zA-Z]{2,}$"),
+            coerce=True,
         ),
         "campaign_id": pa.Column(
-            int, pa.Check(is_valid_id, element_wise=True), coerce=True
+            int,
+            pa.Check(is_valid_id, element_wise=True),
+            coerce=True,
         ),
         "campaign_name": pa.Column(str, pa.Check.isin(CAMPAIGN_NAMES), coerce=True),
         "send_date": pa.Column(pa.Date, coerce=True),
@@ -88,7 +92,9 @@ raw_data_schema = pa.DataFrameSchema(
         ),
         "transaction_date": pa.Column(pa.Date, coerce=True, nullable=True),
         "transaction_amount": pa.Column(
-            float, pa.Check(is_valid_amount, element_wise=True), nullable=True
+            float,
+            pa.Check(is_valid_amount, element_wise=True),
+            nullable=True,
         ),
     },
     checks=[

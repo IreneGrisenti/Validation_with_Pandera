@@ -20,6 +20,22 @@ def load_raw(path: str) -> pd.DataFrame:
     return pd.read_csv(path, encoding="utf-8")
 
 
+def format_reasons(g: pd.DataFrame) -> str:
+    """Build one readable rejection reason per failed row, deduplicating schema-level checks so they appear only once."""
+    seen = set()
+    parts = []
+    for r in g.itertuples():
+        key = r.check if r.schema_context == "DataFrameSchema" else (r.column, r.check)
+        if key in seen:
+            continue
+        seen.add(key)
+        detail = (
+            f" (got: {r.failure_case})" if r.schema_context != "DataFrameSchema" else ""
+        )
+        parts.append(f"col: {r.column}, broken check: {r.check}{detail}")
+    return "; ".join(parts)
+
+
 def build_rejection_report(
     raw_df: pd.DataFrame, failure_cases: pd.DataFrame
 ) -> pd.DataFrame:
@@ -28,13 +44,7 @@ def build_rejection_report(
     rejected_df = raw_df.loc[failed_idx].sort_index().copy()
 
     reasons = (
-        failure_cases.dropna(subset=["index"])
-        .groupby("index")
-        .apply(
-            lambda g: "; ".join(
-                f"{r.column}: {r.check} (got {r.failure_case})" for r in g.itertuples()
-            )
-        )
+        failure_cases.dropna(subset=["index"]).groupby("index").apply(format_reasons)
     )
 
     rejected_df["rejection_reason"] = rejected_df.index.map(reasons.to_dict())
@@ -54,7 +64,7 @@ def main():
         validated_df.to_csv(VALIDATED_PATH, index=True)
 
         return
-    
+
     except pa.errors.SchemaErrors as exc:
 
         rejected_df = build_rejection_report(raw_df, exc.failure_cases)
