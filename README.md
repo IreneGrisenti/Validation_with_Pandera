@@ -7,8 +7,8 @@ The goal was to move from understanding Pandera's individual building blocks to 
 Since email campaign data with transaction data attached is not publicly available for privacy reasons, I generated a synthetic dataset (`data/email_marketing_dataset.csv`).  
 It simulates 100 recipient-level records of an email marketing campaign.  
 
-20% of the rows were corrupted with an error to give the Pandera schema a meaningful set of failures to catch. 
-The clean values, injected errors and the validation rule each error breaks are logged in `data/validation_errors.csv.csv`
+30% of the rows were corrupted with an error to give the Pandera schema a meaningful set of failures to catch. 
+The clean values, injected errors and the validation rule each error breaks are logged in `data/validation_errors.csv`
 
 | Column name | Dtype | Description |
 |---|---|---|
@@ -79,7 +79,7 @@ Validation_with_Pandera/
 ├── main.py
 ├── pandera_exploration.ipynb   
 ├── validation_schema.py
-├── learning_notes.md
+├── report.md
 ├── README.md
 └── requirements.txt
 ```
