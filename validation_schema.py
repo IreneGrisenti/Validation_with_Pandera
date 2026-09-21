@@ -1,5 +1,5 @@
 """
-Schema definition for validating raw email-marketing campaign data.
+Schema definition for validating raw email-marketing data.
 
 Defines `raw_email_schema`, a Pandera DataFrameSchema encoding the expected types, constraints and cross-column rules for the raw dataset.
 """
@@ -98,11 +98,11 @@ raw_data_schema = pa.DataFrameSchema(
         ),
     },
     checks=[
+        pa.Check(check_opened_after_send, error="opened_at before send_date"),
+        pa.Check(check_clicked_after_opened, error="clicked_at before opened_at"),
         pa.Check(
             check_transaction_after_send, error="transaction_date before send_date"
         ),
-        pa.Check(check_opened_after_send, error="opened_at before send_date"),
-        pa.Check(check_clicked_after_opened, error="clicked_at before opened_at"),
         pa.Check(
             check_campaign_id_matches_name,
             error="campaign_id inconsistent with campaign_name",
