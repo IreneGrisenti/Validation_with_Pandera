@@ -1,10 +1,10 @@
 ## Project description  
 This project began as an exploration of the Pandera library, working through its core concepts and features with basic, self-contained examples in a notebook.  
 The second part applies Pandera to a small email campaign dataset implementing a small proof of concept: defining a schema, loading the data, validating it, dropping the rows that fail validation and then validating the cleaned dataset again to confirm it now passes.  
-The goal was to move from understanding Pandera's individual building blocks to seeing how they come together to validate a dataset end-to-end.
+The goal was to move from understanding Pandera's individual building blocks to seeing how they come together to validate a dataset.
 
 ## Data
-Since email campaign data with transaction data attached is not publicly available for privacy reasons, I generated a synthetic dataset (`data/email_marketing_dataset.csv`).  
+Since email campaign data with transaction data is not publicly available for privacy reasons, I generated a synthetic dataset (`data/email_marketing_dataset.csv`).  
 It simulates 100 recipient-level records of an email marketing campaign.  
 
 30% of the rows were corrupted with an error to give the Pandera schema a meaningful set of failures to catch. 
@@ -32,8 +32,8 @@ Injected errors:
 - Missing required fields (`recipient_name` or `campaign_name`)
 - Duplicate `transaction_id`
 - Invalid boolean value for `bounced`
-- `campaign_id` / `campaign_name` mismatch
-- `opened_at` / `clicked_at` before `send_date`
+- `campaign_id`and `campaign_name` mismatch
+- `opened_at` or `clicked_at` before `send_date`
 - `transaction_date` before `send_date`
 - Invalid click/open relationship (`clicked_at` without `opened_at`, or `clicked_at` before `opened_at`)
 
@@ -79,7 +79,7 @@ Validation_with_Pandera/
 ├── main.py
 ├── pandera_exploration.ipynb   
 ├── validation_schema.py
-├── report.md
-├── README.md
+├── README.md  
+├── report.md  
 └── requirements.txt
 ```

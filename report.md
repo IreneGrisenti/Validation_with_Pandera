@@ -2,7 +2,7 @@
 
 ## Syfte
 Syftet med detta projekt var att lära mig grunderna i Pandera, hur det kan användas för schemabaserad datavalidering och hur validering kan integreras som ett steg i en datapipeline.  
-Jag ville förstå hur ett schema definieras, vilka typer av kontroller som kan tillämpas på kolumner och hela dataframes, samt vad som händer när valideringen misslyckas. 
+Jag ville förstå hur ett schema definieras, vilka typer av kontroller som kan tillämpas på kolumner och hela dataframe, samt vad som händer när valideringen misslyckas. 
 
 
 ## Området och dess relevans
@@ -12,7 +12,7 @@ Området jag har fördjupat mig i är datavalidering med fokus på Pandera. Data
 ## Viktiga begrepp
 - Ett **schema** fungerar som ett kontrakt som beskriver hur data förväntas se ut, till exempel vilka kolumner som ska finnas och vilken datatyp de ska ha och vilka värden som är tillåtna.  
 - I Pandera definieras scheman antingen objektbaserat med **DataFrameSchema** eller klassbaserat med **DataFrameModel**.  
-- En **Check** är en regel som tillämpas på en kolumn eller på hela dataframen, till exempel att ett värde måste vara positivt eller att två kolumner måste stämma mot varandra.  
+- En **Check** är en regel som tillämpas på en kolumn eller på hela dataframe, till exempel att ett värde måste vara positivt eller att två kolumner måste stämma mot varandra.  
 - Med **coerce=True** kan Pandera konvertera värden till rätt datatyp innan valideringen sker.  
 - **nullable=True** styr om saknade värden är tillåtna i en kolumn.  
 - Vid **lazy validation** samlas alla validerings fel ihop och rapporteras samtidigt som en **error report** (ett **SchemaErrors**-objekt), istället för att valideringen stoppar vid det första felet.  
@@ -61,6 +61,7 @@ Starting validation of raw data.
 33 of 100 rows failed validation.
 Rejection log written to output/rejected_rows_log.csv
 67 rows passed validation after dropping rejected.
+Validated data written to output/validated_rows.csv
 ```
 
 
@@ -76,7 +77,7 @@ Schemabaserad datavalidering är direkt tillämpbart i en Data Scientist- eller 
 
 ## Självreflektion
 ### 1. Vad lärde du dig som du inte kunde innan?
-Jag lärde mig hur automatiserad datavalidering fungerar i praktiken med Pandera. Specifikt lärde jag mig hur man kan definiera ett schema som kontrollerar både enskilda kolumner och relationer mellan flera kolumner samtidigt, hur man samlar upp alla fel i en error report och hur schema kan integreras i pipelinen. 
+Jag lärde mig hur automatiserad datavalidering fungerar i praktiken med Pandera. Specifikt lärde jag mig hur man kan definiera ett schema som kontrollerar både enskilda kolumner och relationer mellan flera kolumner samtidigt, hur man samlar upp alla fel i en error report och hur ett schema kan integreras i pipelinen. 
 
 ### 2. Vad var svårast att förstå eller genomföra?
 Det svåraste var att förstå varför vissa valideringar inte fungerade som förväntat trots att koden såg korrekt ut, och även skillnaden mellan kolum-checks och element_wise=True-funktioner tog tid att reda ut.
@@ -85,10 +86,10 @@ Det svåraste var att förstå varför vissa valideringar inte fungerade som fö
 Jag är mest nöjd med egna funktioner med element_wise=True för att validera ID-kolumnerna. Istället för ett generellt felmeddelande för hela kolumnen, pekar valideringen ut exakt vilket värde på vilken rad som är ogiltigt. 
 
 ### 4. Vad hade du gjort annorlunda om du började om?
-Om jag började om hade jag lagt in Parser-funktionalitet från början. Att städa data innan validering hade gjort schemat mer robust. Jag hade också planerat pipelinen bättre från början, så att varje steg syns tydligare separat: inläsning av rådata, validering, det att valideringen misslyckas, städning av data, och slutligen validering igen av den rensade dataset.
+Om jag började om hade jag lagt in Parser-funktionalitet från början. Att städa data innan validering hade gjort schemat mer robust. Jag hade också planerat pipelinen bättre från början, så att varje steg syns tydligare separat: inläsning av rådata, validering och avvisade rader, städning av data, och slutligen validering igen av den rensade dataset.
 
 ### 5. Vad skulle vara ett naturligt nästa steg om du fortsatte arbetet?
-Ett naturligt nästa steg skulle vara att lägga till Parser-funktionalitet i schemat. Jag skulle också vilja bygga ut pipelinen så att varje steg blir tydligare separerat och lättare att följa. Det skulle det vara intressant att testa lösningen på en större eller mer oförutsägbar dataset, för att se om schemat behöver bli mer flexibelt för att hantera felmönster som inte är kända i förväg.
+Ett naturligt nästa steg skulle vara att lägga till Parser-funktionalitet i schemat. Jag skulle också vilja bygga ut pipelinen så att varje steg blir tydligare separerat och lättare att följa. Det skulle vara intressant att testa lösningen på en större eller mer oförutsägbar dataset, för att se om schemat behöver bli mer flexibelt för att hantera felmönster som inte är kända i förväg.
 
 ### 6. Vilket betyg tycker du själv att arbetet motsvarar – G eller VG?
 VG
