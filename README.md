@@ -76,6 +76,8 @@ Validation_with_Pandera/
 ├── output/
 │   ├── rejected_rows_log.csv
 │   └── validated_rows.csv
+├── presentation/
+│   └── project_presentation.pdf
 ├── main.py
 ├── pandera_exploration.ipynb   
 ├── validation_schema.py
